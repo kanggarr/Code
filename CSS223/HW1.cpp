@@ -17,7 +17,7 @@ struct TypeAllFriend
 	float Distance;
 	string FriendName;
 	string Ptype;
-} types[55];
+} types[54];
 
 int main()
 {
