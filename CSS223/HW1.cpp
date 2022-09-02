@@ -55,12 +55,12 @@ int main()
 		types[i].FriendName = FriendName[i];
 		types[i].Ptype = Ptype[i];
 	}
-	cout << "ID\tDistance" << endl;
+	// cout << "ID\tDistance" << endl;
 	for (int i = 0; i < 54; i++)
 	{
 		arr[i] = sqrt(pow(MyNe - types[i].NeFriend, 2) + pow(MyNi - types[i].NiFriend, 2) + pow(MyTe - types[i].TeFriend, 2) + pow(MyTi - types[i].TiFriend, 2) + pow(MySe - types[i].SeFriend, 2) + pow(MySi - types[i].SiFriend, 2) + pow(MyFe - types[i].FeFriend, 2) + pow(MyFi - types[i].FiFriend, 2));
 		types[i].Distance = arr[i];
-		cout << types[i].id << "\t" << types[i].Distance << endl;
+		// cout << types[i].id << "\t" << types[i].Distance << endl;
 	}
 	float min0 = arr[0];
 	float min1 = arr[0];
