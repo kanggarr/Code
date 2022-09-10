@@ -1,127 +1,194 @@
 #include <iostream>
-
+#include <string>
 using namespace std;
-
-struct node
-{
-    int score;
-    string name;
-    node *next;
-    node *prev;
-    node()
-    {
-        next = NULL;
-        prev = NULL;
-    }
-    node(string name, int score)
-    {
-        next = NULL;
-        prev = NULL;
-        this->name = name;
-        this->score = score;
-    }
-};
-
-class doublylinklisted
+class ScoreBoard
 {
 private:
-    node *head;
-    node *tail;
-    node *curr;
-    node *bef;
+    string name;
+    float score;
+    ScoreBoard *next;
+    ScoreBoard *prev;
 
 public:
-    void main_add(string name, int score)
+    ScoreBoard(ScoreBoard *next = NULL, ScoreBoard *prev =
+                                            NULL)
     {
-        node *newnode = new node(name, score);
-        if (head == NULL)
+        this->next = next;
+        this->prev = prev;
+    }
+    ScoreBoard(string name, float score, ScoreBoard *next = NULL, ScoreBoard *prev = NULL)
+    {
+        this->name = name;
+        this->score = score;
+        this->next = next;
+        this->prev = prev;
+    }
+    void setName(string name)
+    {
+        this->name = name;
+    }
+    string getName()
+    {
+        return this->name;
+    }
+    void setScore(float score)
+    {
+        this->score = score;
+    }
+    float getScore()
+    {
+        return this->score;
+    }
+    void setNext(ScoreBoard *next)
+    {
+        this->next = next;
+    }
+    ScoreBoard *getNext()
+    {
+        return this->next;
+    }
+    void setPrev(ScoreBoard *prev)
+    {
+        this->prev = prev;
+    }
+    ScoreBoard *getPrev()
+    {
+        return this->prev;
+    }
+};
+class HeadScoreBoard
+{
+private:
+    int max;
+    int num;
+    ScoreBoard *head;
+    ScoreBoard *tail;
+    ScoreBoard *fence;
+
+public:
+    HeadScoreBoard()
+    {
+        setStart();
+    }
+    ~HeadScoreBoard()
+    {
+        destroy();
+    }
+    void setStart()
+    {
+        head = tail = fence = new ScoreBoard;
+        this->max = 10;
+        this->num = 0;
+    }
+    void insert(ScoreBoard *temp)
+    {
+        if (fence->getNext() != NULL)
         {
-            head = newnode;
-            tail = newnode;
+            fence->getNext()->setPrev(temp);
         }
-        else
-            curr = head;
+        temp->setNext(fence->getNext());
+        temp->setPrev(fence);
+        fence->setNext(temp);
+        this->num++;
+    }
+    void remove()
+    {
+        ScoreBoard *temp;
+        temp = fence->getNext();
+        temp->getNext()->setPrev(fence);
+        fence->setNext(temp->getNext());
+        delete temp;
+    }
+    void destroy()
+    {
+        while (head != NULL)
         {
-            while (curr != NULL)
+            fence = head;
+            head = head->getNext();
+            delete fence;
+        }
+    }
+    void fenceToNext()
+    {
+        if (fence->getNext() != NULL)
+        {
+            fence = fence->getNext();
+        }
+    }
+    void fenceToPrev()
+    {
+        if (fence->getPrev() != NULL)
+        {
+            fence = fence->getPrev();
+        }
+    }
+    void addNewScore(string name, float score)
+    {
+        cout << name << " got a new score = " << score << endl;
+        ScoreBoard *temp = new ScoreBoard(name, score);
+        fence = head;
+        while (true)
+        {
+            if (fence == tail)
             {
-                if (curr == head && curr->score < newnode->score)
+                insert(temp);
+                tail = temp;
+                break;
+            }
+            else
+            {
+                if (score > fence->getNext()->getScore())
                 {
-                    newnode->next = head;
-                    curr->prev = newnode;
-                    newnode->prev = 0;
-                    head = newnode;
+                    insert(temp);
                     break;
                 }
                 else
                 {
-                    if (curr->score < newnode->score)
-                    {
-                        newnode->prev = bef;
-                        newnode->next = curr;
-                        curr->prev = newnode;
-                        bef->next = newnode;
-                        break;
-                    }
-                    else if (curr->next == 0)
-                    {
-                        tail->next = newnode;
-                        newnode->prev = curr;
-                        tail = newnode;
-                        tail->next = 0;
-                        break;
-                    }
+                    fenceToNext();
                 }
-                bef = curr;
-                curr = curr->next;
             }
         }
     }
-    void display()
+    void dealExceed()
     {
-        cout << "Name\t\t\tScore" << endl;
-        curr = head;
-        while (curr != 0)
+        while (num > 10)
         {
-            cout << curr->name << "\t\t\t" << curr->score << endl;
-            curr = curr->next;
+            fence = tail->getPrev();
+            cout << tail->getName();
+            cout << " was remove from the score board\n";
+            delete tail;
+            tail = fence;
+            tail->setNext(NULL);
+            num--;
         }
     }
-    void gettailout(string namen)
+    void showBoard()
     {
-        bef = tail->prev;
-        bef->next = 0;
-        if (tail->name == namen)
+        fence = head;
+        while (fence != tail)
         {
-            cout << "You score did't reach a score board" << endl;
+            cout << fence->getNext()->getName();
+            cout << "\n" << fence->getNext()->getScore() << endl;
+            fenceToNext();
         }
-        else
-        {
-            cout << tail->name << " is out from the board" << endl;
-        }
-        delete tail;
-        tail = bef;
     }
 };
 int main()
 {
-    doublylinklisted *calld = new doublylinklisted();
-    string name;
-    int score;
-    int i = 0;
-    while (true){
-    cout << "Enter Player " << i << " Name : ";
-    cin >> name;
-    cout << "Enter Player " << i << " Score : ";
-    cin >> score;
-    calld->main_add(name, score);
-    calld->display();
-    cout << "Hello New player! Enter Your Name : ";
-    cin >> name;
-    cout << "And your Score ! : ";
-    cin >> score;
-    calld->main_add(name, score);
-    calld->gettailout(name);
-    calld->display();
-    i++;
-    }
+    HeadScoreBoard board;
+    cout<<"-----------SCOREBORAD Top 10-----------"<<endl;
+    board.addNewScore("Pumipat", 40);
+    board.addNewScore("Awirut", 80);
+    board.addNewScore("Chaninat", 50);
+    board.addNewScore("Kollawat", 55);
+    board.addNewScore("Pakawat", 53);
+    board.addNewScore("Kantapon", 67);
+    board.addNewScore("Sirawit", 64);
+    board.addNewScore("Siraphat", 69);
+    board.addNewScore("Thanyapisit", 92);
+    board.addNewScore("Punnapa", 98);
+    board.addNewScore("Varintorn", 83);
+    board.dealExceed();
+    // board.showBoard();
+    return 0;
 }
