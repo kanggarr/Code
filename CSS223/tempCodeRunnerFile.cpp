@@ -1,5 +1,5 @@
 #include <iostream>
-#include <string>
+
 using namespace std;
 class ScoreBoard
 {
@@ -10,8 +10,7 @@ private:
     ScoreBoard *prev;
 
 public:
-    ScoreBoard(ScoreBoard *next = NULL, ScoreBoard *prev =
-                                            NULL)
+    ScoreBoard(ScoreBoard *next = NULL, ScoreBoard *prev =NULL)
     {
         this->next = next;
         this->prev = prev;
@@ -189,6 +188,6 @@ int main()
     board.addNewScore("Punnapa", 98);
     board.addNewScore("Varintorn", 83);
     board.dealExceed();
-    // board.showBoard();
+    board.showBoard();
     return 0;
 }
