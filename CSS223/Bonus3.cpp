@@ -75,7 +75,9 @@ public:
     }
     void setStart()
     {
-        head = tail = fence = new ScoreBoard;
+        head = new ScoreBoard;
+        tail = new ScoreBoard;
+        fence = new ScoreBoard;
         this->max = 10;
         this->num = 0;
     }
