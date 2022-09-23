@@ -20,7 +20,7 @@ private:
 public:
     Polynomial()
     {
-        cout << "Polynomial created." << endl;
+        // cout << "Polynomial created." << endl;
         head = tail = NULL;
     }
     ~Polynomial()
@@ -32,7 +32,7 @@ public:
             head = head->next;
             delete temp;
         }
-        cout << "Polynomial deleted." << endl;
+        // cout << "Polynomial deleted." << endl;
     }
 
     void Insert(float coeff, int exp)
@@ -113,29 +113,29 @@ public:
         Node *temp1, *temp2;
         temp1 = head1;
         temp2 = head2;
-        float arrc[20] = {}, cc, t = 0;
-        int arrxx[20] = {}, x, count = 0;
+        float arrcoeff[20] = {}, coeffic, t = 0;
+        int arrexp[20] = {}, exp, count = 0;
         while (temp1 != NULL)
         {
             temp2 = head2;
             while (temp2 != NULL)
             {
                 t = 0;
-                cc = temp1->coefficient * temp2->coefficient;
-                x = temp1->drgee + temp2->drgee;
+                coeffic = temp1->coefficient * temp2->coefficient;
+                exp = temp1->drgee + temp2->drgee;
                 for (int i = 0; i < count; i++)
                 {
-                    if (x == arrxx[i])
+                    if (exp == arrexp[i])
                     {
-                        arrc[i] += cc;
+                        arrcoeff[i] += coeffic;
                         t = 1;
                         break;
                     }
                 }
                 if (t == 0)
                 {
-                    arrc[count] = cc;
-                    arrxx[count] = x;
+                    arrcoeff[count] = coeffic;
+                    arrexp[count] = exp;
                     count++;
                 }
                 temp2 = temp2->next;
@@ -144,7 +144,7 @@ public:
         }
         for (int i = 0; i < count; i++)
         {
-            Insert(arrc[i], arrxx[i]);
+            Insert(arrcoeff[i], arrexp[i]);
         }
     }
 
@@ -160,14 +160,13 @@ public:
         {
             while (temp != NULL)
             {
-                cout << temp->coefficient << "x^" << temp->drgee << " ";
+                cout << temp->coefficient << "x^" << temp->drgee << "+";
                 temp = temp->next;
             }
-            cout << endl;
+            cout << "\b \b" << endl;
         }
         else
         {
-
             cout << "The list is empty.\n";
         }
     }
@@ -189,7 +188,7 @@ main()
     c.add(a.Get_Head(), b.Get_Head());
     d.multi(a.Get_Head(), b.Get_Head());
 
-    cout << "\n****************************************" << endl;
+    cout << "\n---------------------------------------------\n" << endl;
     cout << "a = ";
     a.Show();
     cout << "b = ";
@@ -200,5 +199,5 @@ main()
     cout << "\nResult with Mutiple Polynomial" << endl;
     cout << "d = a x b\nd = ";
     d.Show();
-    cout << "\n****************************************" << endl;
+    cout << "\n---------------------------------------------" << endl;
 }
