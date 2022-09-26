@@ -7,7 +7,7 @@ public class TestShape2 {
         System.out.println(s2);
         System.out.println("Area is " + s2.getArea());
     
-        Shape2 s3 = new Shape2("green");
+        // Shape2 s3 = new Shape2("green");
     }
 
 }
