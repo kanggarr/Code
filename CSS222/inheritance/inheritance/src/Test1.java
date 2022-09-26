@@ -1,4 +1,4 @@
-public class TestManager {
+public class Test1 {
     public static void main(String[] args) {
         Employee emp1 = new Employee("Por", 12000);
         Employee emp2 = new Employee("Louis", 15000);
