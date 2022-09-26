@@ -17,3 +17,4 @@ public class HourlyWorker extends Worker {
     }
 
 }
+

@@ -9,7 +9,11 @@ public class FullTimeWorker extends Worker{
 
     @Override
     public double computePay() {
-        return 100 * hours_Worked;
+        if(hours_Worked > 240){
+            return -1;
+        } else {
+            return 100*hours_Worked;
+        }
     }
-    // 240 hours per month
+    
 }
