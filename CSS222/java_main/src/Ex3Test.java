@@ -13,7 +13,7 @@ class E extends D {
 class Ex3Test{
     public static void main(String[] args){
         new E().show();
-        A a1 = new E();
-        D d1 = (D) a1;
+        // A a1 = new E();
+        // D d1 = (D) a1;
     }
 }

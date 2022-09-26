@@ -10,7 +10,7 @@ public class Rectangle extends Shape {
 
     @Override
     public String toString(){
-        return "Rectangle of length=" + length + "and width= + width"+ ", subclass of " + super.toString();
+        return "Rectangle of length=" + length + "and width= "+ width+ ", subclass of " + super.toString();
     }
 
     @Override
