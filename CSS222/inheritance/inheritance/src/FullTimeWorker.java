@@ -11,5 +11,5 @@ public class FullTimeWorker extends Worker{
     public double computePay() {
         return 100 * hours_Worked;
     }
-    
+    // 240 hours per month
 }

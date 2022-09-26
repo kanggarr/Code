@@ -9,7 +9,11 @@ public class HourlyWorker extends Worker {
 
     @Override
     public double computePay() {
-        return 50*hours_Worked;
+        if(hours_Worked > 60){
+            return -1;
+        } else {
+            return 50*hours_Worked;
+        }
     }
 
 }
