@@ -188,7 +188,7 @@ main()
     c.add(a.Get_Head(), b.Get_Head());
     d.multi(a.Get_Head(), b.Get_Head());
 
-    cout << "\n---------------------------------------------\n" << endl;
+    cout << "\n---------------------------------------------\n"<< endl;
     cout << "a = ";
     a.Show();
     cout << "b = ";
