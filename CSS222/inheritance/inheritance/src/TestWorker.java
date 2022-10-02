@@ -19,7 +19,7 @@ public class TestWorker {
         Worker w3 = new HourlyWorker("Ten", 50, 99999999);
         // System.out.println(w3);
         if(w3.computePay() == -1){
-            System.out.println("Error: Hours worked is greater than 60");
+            System.out.println("Error: Hours worked is greater than 60 hour");
         } else {
             System.out.println("Pay: " + w3.computePay());
         }
@@ -27,7 +27,7 @@ public class TestWorker {
         Worker w4 = new FullTimeWorker("Yayee", 100, 99999999);
         // System.out.println(w4);
         if(w4.computePay() == -1){
-            System.out.println("Error: Hours worked is greater than 250");
+            System.out.println("Error: Hours worked is greater than 250 hour");
         } else {
             System.out.println("Pay: " + w4.computePay());
         }
