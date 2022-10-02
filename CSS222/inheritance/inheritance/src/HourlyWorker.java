@@ -1,9 +1,11 @@
 public class HourlyWorker extends Worker {
 
     private int hours_Worked;
+    private double salary_rate;
 
     HourlyWorker(String name, double salary_rate, int hours_Worked){
         super(name, salary_rate);
+        this.salary_rate = salary_rate;
         this.hours_Worked = hours_Worked;
     }    
 
@@ -12,7 +14,7 @@ public class HourlyWorker extends Worker {
         if(hours_Worked > 60){
             return -1;
         } else {
-            return 50*hours_Worked;
+            return salary_rate*hours_Worked;
         }
     }
 
