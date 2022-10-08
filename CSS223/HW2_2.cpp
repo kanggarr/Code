@@ -80,7 +80,7 @@ public:
         fence = head;
         return 0;
     }
-    int fenceToNext()
+    void fenceToNext()
     { // O(1)
         if (fence->getNext() != NULL)
         {
