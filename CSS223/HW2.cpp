@@ -7,7 +7,7 @@ using namespace std;
 struct Node
 {
     float coefficient;
-    int drgee;
+    int degree;
     Node *next;
 };
 
@@ -40,14 +40,14 @@ public:
 
         Node *new_node = new Node();
         new_node->coefficient = coeff;
-        new_node->drgee = exp;
+        new_node->degree = exp;
         if (head == NULL)
         {
             head = tail = new_node;
         }
         else
         {
-            if (exp > head->drgee)
+            if (exp > head->degree)
             {
                 new_node->next = head;
                 head = new_node;
@@ -57,7 +57,7 @@ public:
                 Node *temp = head;
                 while (temp->next != NULL)
                 {
-                    if (temp->next->drgee < exp)
+                    if (temp->next->degree < exp)
                     {
                         new_node->next = temp->next;
                         temp->next = new_node;
@@ -78,32 +78,32 @@ public:
         temp2 = head2;
         while (temp1 != NULL && temp2 != NULL)
         {
-            if (temp1->drgee == temp2->drgee)
+            if (temp1->degree == temp2->degree)
             {
-                Insert(temp1->coefficient + temp2->coefficient, temp1->drgee);
+                Insert(temp1->coefficient + temp2->coefficient, temp1->degree);
                 temp1 = temp1->next;
                 temp2 = temp2->next;
             }
-            else if (temp1->drgee > temp2->drgee)
+            else if (temp1->degree > temp2->degree)
             {
-                Insert(temp1->coefficient, temp1->drgee);
+                Insert(temp1->coefficient, temp1->degree);
                 temp1 = temp1->next;
             }
             else
             {
-                Insert(temp2->coefficient, temp2->drgee);
+                Insert(temp2->coefficient, temp2->degree);
                 temp2 = temp2->next;
             }
         }
         while (temp1 != NULL)
         {
-            Insert(temp1->coefficient, temp1->drgee);
+            Insert(temp1->coefficient, temp1->degree);
             temp1 = temp1->next;
         }
         while (temp2 != NULL)
         {
 
-            Insert(temp2->coefficient, temp2->drgee);
+            Insert(temp2->coefficient, temp2->degree);
             temp2 = temp2->next;
         }
     }
@@ -122,7 +122,7 @@ public:
             {
                 t = 0;
                 coeffic = temp1->coefficient * temp2->coefficient;
-                exp = temp1->drgee + temp2->drgee;
+                exp = temp1->degree + temp2->degree;
                 for (int i = 0; i < count; i++)
                 {
                     if (exp == arrexp[i])
@@ -160,7 +160,7 @@ public:
         {
             while (temp != NULL)
             {
-                cout << temp->coefficient << "x^" << temp->drgee << "+";
+                cout << temp->coefficient << "x^" << temp->degree << "+";
                 temp = temp->next;
             }
             cout << "\b \b" << endl;

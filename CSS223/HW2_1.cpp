@@ -4,9 +4,6 @@
 
 using namespace std; 
 
-//creted linked list for create polynomia
-//and implemented the method addition and multiplication
-
 class Node {
 public:
     int coefficient;

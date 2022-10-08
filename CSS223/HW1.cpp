@@ -103,6 +103,19 @@ int main()
 	string findMyType1 = types[index1].Ptype;
 	string findMyType2 = types[index2].Ptype;
 
+	char firstChar0 = findMyType0[0];
+	char firstChar1 = findMyType1[0];
+	char firstChar2 = findMyType2[0];
+	char secondChar0 = findMyType0[1];
+	char secondChar1 = findMyType1[1];
+	char secondChar2 = findMyType2[1];
+	char thirdChar0 = findMyType0[2];
+	char thirdChar1 = findMyType1[2];
+	char thirdChar2 = findMyType2[2];
+	char fourthChar0 = findMyType0[3];
+	char fourthChar1 = findMyType1[3];
+	char fourthChar2 = findMyType2[3];
+
 	if (findMyType0 == findMyType1 && findMyType1 == findMyType2)
 	{
 		cout << "Your friend have type : " << findMyType0 << endl;
@@ -123,19 +136,8 @@ int main()
 	{
 		cout << "Your friend have type : " << findMyType0 << ", " << findMyType1 << " and " << findMyType2 << endl;
 	}
-
-	char firstChar0 = findMyType0[0];
-	char firstChar1 = findMyType1[0];
-	char firstChar2 = findMyType2[0];
-	char secondChar0 = findMyType0[1];
-	char secondChar1 = findMyType1[1];
-	char secondChar2 = findMyType2[1];
-	char thirdChar0 = findMyType0[2];
-	char thirdChar1 = findMyType1[2];
-	char thirdChar2 = findMyType2[2];
-	char fourthChar0 = findMyType0[3];
-	char fourthChar1 = findMyType1[3];
-	char fourthChar2 = findMyType2[3];
+	
+// --------------------
 
 	if (firstChar0 == firstChar1 && firstChar1 == firstChar2)
 	{
